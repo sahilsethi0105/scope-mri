@@ -3,7 +3,7 @@ Deep learning for Bankart lesion detection
 
 [`Link to Paper`](...)
 
-# Grad Cam: Interpreting what our models learned
+## Grad Cam: Interpreting what our models learned
 - [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs GradCam heat maps of what the model is "looking at" in each image
 
 
