@@ -272,7 +272,7 @@ class MRNetDataset2D(Dataset):
 
 # Constants for normalization
 INPUT_DIM = 224
-RESIZE_DIM = 400 #256
+RESIZE_DIM = 400 
 
 # Values for mean and stddev pixel intensities for each MRI type
 MEANS_STDEVS = {
@@ -362,7 +362,7 @@ class MRIDataset3D(Dataset):
             RandRotated(keys=["image"], prob=0.5, range_x=5 * np.pi / 180, range_y=0, range_z=0, mode="bilinear"),
         ])
 
-                # Create a list to store the augmented index mapping
+        # Create a list to store the augmented index mapping
         self.augmented_indices = []
 
         # Iterate through the DataFrame by row number (original index)
@@ -511,7 +511,7 @@ class MRIDataset2D(Dataset):
             RandAffined(
                 keys=["image"],
                 prob=0.3,
-                #rotate_range=(0, 0, np.pi / 18),  # Smaller rotations
+                #rotate_range=(0, 0, np.pi / 18),  # Small rotations
                 scale_range=(0.9, 1.1),          # Slight scaling
                 translate_range=(0.02, 0.02),    # Small translations
                 mode="bilinear",
