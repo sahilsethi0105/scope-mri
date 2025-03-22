@@ -1,8 +1,9 @@
 # scope-mri
-Deep learning for Bankart lesion detection
+This repository accompanies the release of the SCOPE-MRI dataset, described in the following papers: 
 
-[`Link to Paper`](...)
+SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses. [`Link to Paper`](...)
 
+Sethi, S., Reddy, S., Sakavadia, M., Serotte, J., Nwaudo, D., Maassen, N., & Shi, L. Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning. Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis. [`Link to Paper`](https://arxiv.org/abs/2412.06717)
 
 ## Installation
 
