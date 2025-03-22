@@ -232,7 +232,7 @@ def objective(trial):
         print("No checkpoint found, starting training from scratch.")
 
 
-    # Define CSV path for tuning results based on dataset type
+    # Define CSV path for tuning results based on dataset type (this saves results to a master CSV)
     if args.dataset_type == 'labrum':
         csv_path = "/gpfs/data/orthopedic-lab/ortho_ml/experiments/labrum_tune_results.csv"
     elif args.dataset_type == 'MRNet':
