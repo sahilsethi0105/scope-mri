@@ -1,4 +1,4 @@
-name: /gpfs/data/orthopedic-lab/ortho_env
+name: ortho_env
 channels:
   - defaults
   - https://repo.anaconda.com/pkgs/main
