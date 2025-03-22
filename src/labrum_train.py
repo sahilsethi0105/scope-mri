@@ -36,35 +36,35 @@ def str2bool(v):
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser()
-parser.add_argument('--preprocessed_folder', type=str, required=True)
-parser.add_argument('--label_column', type=str, required=True)
+parser.add_argument('--preprocessed_folder', type=str, required=True) # Path to folder containing "train", "val", and "test" subfolders
+parser.add_argument('--label_column', type=str, required=True) # Label column in metadata.csv for train, val, and test subfolders
 parser.add_argument('--view', type=str, required=True, help='Selected view (axial, sagittal, coronal, ABERS, all)')
-parser.add_argument('--batch_size', type=int, required=True)
+parser.add_argument('--batch_size', type=int, required=True) # We only use batch size of 1 in our study
 parser.add_argument('--num_epochs', type=int, required=True)
-parser.add_argument('--job_name', type=str, required=True)
+parser.add_argument('--job_name', type=str, required=True) # Job name for saving results to subfolders
 parser.add_argument('--model_type', type=str, required=True, help='Model type (ResNet50, MRNet, or CNN3D)')
 parser.add_argument('--lr', type=float, required=True)
 parser.add_argument('--weight_decay', type=float, required=True)
 parser.add_argument('--dropout_rate', type=float, required=False)
-parser.add_argument('--augment', type=str2bool, nargs='?', const=True, default=False, help="Whether to apply data augmentation during training")
-parser.add_argument('--augment_factor', type=int, required=True) 
-parser.add_argument('--augment_factor_0', type=int, default=1) 
-parser.add_argument('--model_weights', type=str, default=None, help='Path to model weights to initialize from')
-parser.add_argument('--transform_val', type=str2bool, nargs='?', const=True, default=True, help="Whether to apply data augmentation during training")
+parser.add_argument('--augment', type=str2bool, nargs='?', const=True, default=False, help="Whether to apply data augmentation during training") # Keep this True always
+parser.add_argument('--augment_factor', type=int, default=10) # Augmentation factor for positive class (label = 1)
+parser.add_argument('--augment_factor_0', type=int, default=10)  # Augmentation factor for negative class (label = 0)
+parser.add_argument('--model_weights', type=str, default=None, help='Path to model weights to initialize from') # Use this argument to specify a model pre-trained on MRNet
+parser.add_argument('--transform_val', type=str2bool, nargs='?', const=True, default=True, help="Whether to apply data augmentation during training") # Keep this True always
 parser.add_argument('--scheduler', type=str, default='ReduceLROnPlateau', help='Scheduler type (ReduceLROnPlateau, CosineAnnealingLR)')
-parser.add_argument('--sequence_type', type=str, default='all', help='Sequence type to include (e.g., T1, T2, all)')
+parser.add_argument('--sequence_type', type=str, default='all', help='Sequence type to include (e.g., T1, T2, all)') 
 parser.add_argument('--fat_sat', type=str, default='all', help='Fat saturation to include (Yes, No, all)')
-parser.add_argument('--contrast_or_no', type=str, default='all', help='Contrast type to include (WO, W, WWO, all)')
+parser.add_argument('--contrast_or_no', type=str, default='all', help='Contrast type to include (WO, W, WWO, all)') # Note that we exclude WWO in our study
 parser.add_argument('--dataset_type', type=str, required=True, choices=['labrum', 'MRNet'], help='Dataset type (labrum or MRNet)')
-parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weight to "automatic" or an integer value.')
-parser.add_argument('--script_mode', type=str, default='train', help='Script mode (train or CV)')
+parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weight to "automatic" or an integer value.') # We always use 'automatic'
+parser.add_argument('--script_mode', type=str, default='train', help='Script mode (train or CV)') # CV will initiate cross-validation using N cycles/folds
 parser.add_argument('--ret_val_probs', type=str2bool, nargs='?', const=True, default=False, help="Whether to return inference probabilities on validation set")
-parser.add_argument('--n_cycles', type=int, default=5, help='Number of folds for CV')
-parser.add_argument('--seed', type=int, default=42, help='random seed for folds for CV')
+parser.add_argument('--n_cycles', type=int, default=5, help='Number of folds for CV') 
+parser.add_argument('--seed', type=int, default=None, help='random seed for folds for CV') # Specify a random seed for reproducibility
 
 args = parser.parse_args()
 
-SEED = args.seed #42  # Or any fixed seed value
+SEED = args.seed 
 random.seed(SEED)
 np.random.seed(SEED)
 torch.manual_seed(SEED)
