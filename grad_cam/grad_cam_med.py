@@ -10,13 +10,13 @@ import requests
 import cv2
 from pytorch_grad_cam.utils.image import show_cam_on_image, preprocess_image, deprocess_image
 import sys
-sys.path.append("../")
+import os
+sys.path.append(os.path.abspath(os.path.join("..", "src")))
 from models import CNN3D, ResNet50, AlexNet, VisionTransformer, SwinTransformerV1, SwinTransformerV2, ResNet34, DenseNet, EfficientNet
 from training_functions import load_model_weights
 from loader import prepare_and_create_loaders, load_metadata
 import argparse
 from typing import Callable, List, Optional, Tuple
-import os
 from pathlib import Path
 
 # Function to convert string to boolean
@@ -37,7 +37,7 @@ parser.add_argument('--view', type=str, default="sagittal", help='Selected view 
 parser.add_argument('--batch_size', type=int, default=1, )
 parser.add_argument('--num_epochs', type=int, default=0, )
 parser.add_argument('--job_name', type=str, default="grad_cam", )
-#NOTE(MS): arg to vary
+#NOTE: arg to vary
 parser.add_argument('--model_type', default="VisionTransformer", choices=["VisionTransformer","ResNet50", "AlexNet", "SwinTransformerV1"], type=str, help='Model type (ResNet50, MRNet, or CNN3D)')
 parser.add_argument('--lr', type=float, default=1e-6)
 parser.add_argument('--weight_decay', type=float, default=1e-6)
@@ -112,7 +112,7 @@ print(args)
 train_loader, val_loader, test_loader = prepare_and_create_loaders(args, num_workers=0)
 print("loaded data")
 
-############ NOTE(MS): custom grad cam for VIT model
+############ NOTE: custom grad cam for VIT model
 from typing import Callable, List, Optional, Tuple
 
 import numpy as np
@@ -336,11 +336,6 @@ class BaseCAM:
             # Handle IndexError here...
             print(f"An exception occurred in CAM with block: {exc_type}. Message: {exc_value}")
             return True
-
-import numpy as np
-
-#from pytorch_grad_cam.base_cam import BaseCAM
-
 
 class GradCAM(BaseCAM):
     def __init__(self, model, target_layers,
