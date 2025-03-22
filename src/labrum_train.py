@@ -18,11 +18,6 @@ from torch.utils.data import Dataset, DataLoader, ConcatDataset, Subset
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, recall_score, precision_score, f1_score, roc_auc_score, roc_curve
 from torch.utils.tensorboard import SummaryWriter
 
-#SEED = 42  # Or any fixed seed value
-#random.seed(SEED)
-#np.random.seed(SEED)
-#torch.manual_seed(SEED)
-
 # Function to convert string to boolean
 def str2bool(v):
     if isinstance(v, bool):
