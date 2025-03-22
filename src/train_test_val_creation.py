@@ -47,7 +47,7 @@ def filter_mri_data(mri_data_df, labels_df, label_columns, views, sequence_types
 
     return merged_df
 
-def stratified_split_data_by_mri_id(mri_data_df, label_columns, test_size=0.1, val_size=0.2, random_state=42):
+def stratified_split_data_by_mri_id(mri_data_df, label_columns, test_size=0.1, val_size=0.2, random_state=None):
     mri_ids = mri_data_df['mri_id'].unique()
     labels = mri_data_df.drop_duplicates(subset='mri_id')[label_columns].values
 
