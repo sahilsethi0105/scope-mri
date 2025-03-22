@@ -24,8 +24,14 @@ conda activate ortho_env
 Please cite this work as:
 
 ```bibtex
-@inproceedings{sethi2025scope,
-...
+@misc{sethi2024noninvasivediagnosisbankartlesions,
+      title={Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning}, 
+      author={Sahil Sethi and Sai Reddy and Mansi Sakarvadia and Jordan Serotte and Darlington Nwaudo and Nicholas Maassen and Lewis Shi},
+      year={2024},
+      eprint={2412.06717},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.06717}, 
 }
 ```
 ## Data Availability
