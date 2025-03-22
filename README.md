@@ -1,5 +1,5 @@
 # scope-mri
-This repository accompanies the release of the SCOPE-MRI dataset, described in the following papers: 
+This repository accompanies the release of the SCOPE-MRI dataset—a publically available shoulder MRI dataset with image-level labels for several different pathologies. 
 
 SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses. [`Link to Paper`](...)
 
@@ -30,7 +30,7 @@ Please cite this work as:
 ```
 ## Data Availability
 The data used in our study has been released on: https://www.midrc.org/
-Due to the conditions of our Institutional Review Board (IRB) and Data Use Agreement, data must be obtained in DICOM format directly from the repository. However, we have included our preprocessing code: 
+Due to the conditions of our Institutional Review Board (IRB) and Data Use Agreement, data must be obtained in DICOM format directly from the repository. \ However, we have included our preprocessing code: 
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py): 
 
 ## Running training, tuning, and testing
