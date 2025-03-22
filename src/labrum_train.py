@@ -34,7 +34,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--preprocessed_folder', type=str, required=True) # Path to folder containing "train", "val", and "test" subfolders
 parser.add_argument('--label_column', type=str, required=True) # Label column in metadata.csv for train, val, and test subfolders
 parser.add_argument('--view', type=str, required=True, help='Selected view (axial, sagittal, coronal, ABERS, all)')
-parser.add_argument('--batch_size', type=int, required=True) # We only use batch size of 1 in our study
+parser.add_argument('--batch_size', type=int, required=True) # This should be 1 for all 2D models, CNN3D must have > 1
 parser.add_argument('--num_epochs', type=int, required=True)
 parser.add_argument('--job_name', type=str, required=True) # Job name for saving results to subfolders
 parser.add_argument('--model_type', type=str, required=True, help='Model type (ResNet50, MRNet, or CNN3D)')
