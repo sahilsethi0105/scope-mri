@@ -256,7 +256,7 @@ if (args.script_mode == 'train'):
     # Define number of epochs for training
     num_epochs = args.num_epochs
 
-    # Set CSV path based on dataset type
+    # Set CSV path based on dataset type (this saves results to a master CSV)
     if args.dataset_type == 'labrum':
         csv_path = "/gpfs/data/orthopedic-lab/ortho_ml/experiments/labrum_results.csv"
     elif args.dataset_type == 'MRNet':
