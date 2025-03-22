@@ -19,7 +19,7 @@ import pickle
 from torch.utils.tensorboard import SummaryWriter
 import joblib
 
-SEED = 42  # Or any fixed seed value
+SEED = 42  
 random.seed(SEED)
 np.random.seed(SEED)
 torch.manual_seed(SEED)
@@ -29,14 +29,6 @@ def save_study(study, filename):
 
 def load_study(filename):
     return joblib.load(filename)
-
-#def save_study(study, filename):
-#    with open(filename, 'wb') as f:
-#        pickle.dump(study, f)
-
-#def load_study(filename):
-#    with open(filename, 'rb') as f:
-#        return pickle.load(f)
 
 # Function to convert string to boolean
 def str2bool(v):
@@ -55,17 +47,17 @@ def objective(trial):
     weight_decay = trial.suggest_float('weight_decay', 1e-6, 1e-1, log=True)
     dropout_rate = trial.suggest_float('dropout_rate', 0.0, 0.5)
     scheduler_type = trial.suggest_categorical('scheduler', ['ReduceLROnPlateau', 'CosineAnnealingLR', 'CyclicLR'])
-    augment_factor = 10 #trial.suggest_int('augment_factor', 1, 5)
-    augment_factor_0 = augment_factor #args.augment_factor_0  #trial.suggest_int('augment_factor_0', 1, 2)
+    augment_factor = 10 
+    augment_factor_0 = augment_factor 
 
     # Suggest categorical hyperparameters for sequence_type, fat_sat, and contrast_or_no
-    sequence_type = args.sequence_type #trial.suggest_categorical('sequence_type', ['all', 'T1', 'T2'])
-    fat_sat = args.fat_sat #trial.suggest_categorical('fat_sat', ['all', 'Yes', 'No'])
-    contrast_or_no = args.contrast_or_no #trial.suggest_categorical('contrast_or_no', ['all', 'WO', 'W', 'WWO'])
+    sequence_type = args.sequence_type 
+    fat_sat = args.fat_sat
+    contrast_or_no = args.contrast_or_no 
 
     # Arguments from argparse or function call
     num_workers=4
-    batch_size = args.batch_size #trial.suggest_int('batch_size', 2, 8)
+    batch_size = args.batch_size 
     preprocessed_folder = args.preprocessed_folder
     label_column = args.label_column
     view = args.view
@@ -76,7 +68,7 @@ def objective(trial):
     transform_val = args.transform_val
 
     # Create a unique TensorBoard writer for each trial
-    log_dir = f"/gpfs/data/orthopedic-lab/tb_logs/{job_name}/trial_{trial.number}"
+    log_dir = f"/gpfs/data/orthopedic-lab/tb_logs/{job_name}/trial_{trial.number}" #update this with your 
     writer = SummaryWriter(log_dir=log_dir)
 
     print(f"Starting trial {trial.number} with parameters: {trial.params}")
@@ -269,8 +261,6 @@ def objective(trial):
         early_stopping_patience=10  # Added early stopping parameter
     )
 
-    #model, val_acc = train_model(model, combined_train_loader, combined_val_loader, criterion, optimizer, scheduler, num_epochs=num_epochs, pos_weight=pos_weight, device=device, save_path=checkpoint_dir, start_epoch=start_epoch, best_acc=best_acc, save_checkpoints=False, csv_path=csv_path, args=args, trial=trial, return_acc=True, writer=writer)
-
     prob_csv_path = f'/gpfs/data/orthopedic-lab/ortho_ml/experiments/{args.job_name}_trial_{trial.number}_probs.csv'
 
     # Evaluate the model on the test set
@@ -279,7 +269,7 @@ def objective(trial):
     # Classification report
     print(classification_report(y_true, y_pred))
 
-        # Confusion matrix
+    # Confusion matrix
     conf_matrix = confusion_matrix(y_true, y_pred)
     print("Confusion Matrix:\n", conf_matrix)
 
