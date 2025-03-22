@@ -1,8 +1,7 @@
 # scope-mri
-This repository accompanies the release of the SCOPE-MRI dataset—a publically available shoulder MRI dataset with image-level labels for several different pathologies. 
+This repository accompanies the release of the SCOPE-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper _SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses._ [`Link to Paper`](...)
 
-SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses. [`Link to Paper`](...)
-
+This dataset was first described in our prior paper: 
 Sethi, S., Reddy, S., Sakavadia, M., Serotte, J., Nwaudo, D., Maassen, N., & Shi, L. Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning. Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis. [`Link to Paper`](https://arxiv.org/abs/2412.06717)
 
 ## Installation
@@ -18,10 +17,9 @@ conda env create -f environment.yml
 conda activate ortho_env 
 ```
 
-
 ## Citation
 
-Please cite this work as:
+Please cite this work as **(UPDATE with SCOPE-MRI citation after arXiv post)**:
 
 ```bibtex
 @misc{sethi2024noninvasivediagnosisbankartlesions,
@@ -35,9 +33,11 @@ Please cite this work as:
 }
 ```
 ## Data Availability
-The data used in our study has been released on: https://www.midrc.org/
-Due to the conditions of our Institutional Review Board (IRB) and Data Use Agreement, data must be obtained in DICOM format directly from the repository. \ However, we have included our preprocessing code: 
-- [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py): 
+The data used in our study has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our scans in their system and download the DICOMs (**~XX GB**). The, follow the pre-processing steps below.
+
+## Initial data import
+- [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
+- [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py): 
 
 ## Running training, tuning, and testing
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
