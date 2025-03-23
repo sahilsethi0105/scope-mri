@@ -41,7 +41,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 ## Using the Repo with SCOPE-MRI
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
-- For all files in this codebase, __your ```preprocessed_folder``` should be the final folder that contains your ```train```, ```val```, and ```test``` subfolders__
+- For all files in this codebase, _your ```preprocessed_folder``` should be the final folder that contains your ```train```, ```val```, and ```test``` subfolders_
   - Note that these each contain subfolders for each MRI_ID, each with one preprocessed .npy array for each sequence in that MRI
 
 ## Using the Repo with MRNet
