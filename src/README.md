@@ -80,13 +80,13 @@ Notes:
  - Note that the performance metrics printed and logged to TensorBoard are all at the MRI sequence level. Each input MRI may contain several sequences, such as T1 coronal, T2 sagittal, etc.
  - We select which view (coronal, sagittal, or axial) to use using the ```view``` argument
  - For each view, we select which sequences to use using the ```sequence_type``` and ```fat_sat``` arguments (we use all available sequences for a given view in our paper, excluding localization/scout/survey sequences)
-  - These arguments are ignored for the MRNet dataset as it only has one sequence per view
+   - These arguments are ignored for the MRNet dataset as it only has one sequence per view
  - All dataset splits in this codebase are done at the _MRI_ID_ level, which ensures that sequences from the same original MRI are in the same split
  - The ```{job_name}_probs.csv``` and ```{job_name}_val_probs.csv``` results files can be used to aggregate predictions from the individual MRI sequences to the MRI_ID level (we simply average the sequence probabilities)
  - If you train separate models on sagittal, axial, and coronal sequences, you can then combine these final MRI_ID level probabilities (we simply average these across the three views)
  - [`ensemble.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/ensemble.ipynb) combines probabilities from models trained on separate views in the way specified above
-  - If you prefer to use another method besides averaging to combine the sequence probabilities, change ```sequence_mode```
-  - If you prefer to use another method besides averaging to combine the view probabilities, change ```view_mode```
+   - If you prefer to use another method besides averaging to combine the sequence probabilities, change ```sequence_mode```
+   - If you prefer to use another method besides averaging to combine the view probabilities, change ```view_mode```
   
 ## Summary of remaining files
  - ```MRI_and_metadata_import.py``` contains the logic
