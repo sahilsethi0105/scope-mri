@@ -55,7 +55,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
    - Arguments specific to SCOPE-MRI, such as ```sequence_type``` and ```contrast_or_no``` will be ignored, so you can set them to any valid value
 
 ## Visualizing MRIs
- - [`visualize_MRIs.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/visualize_MRIs.ipynb): notebook for viewing the MRIs
+ - [`visualize_MRIs.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/visualize_MRIs.ipynb) is a Jupyter notebook for viewing the MRIs
  - For SCOPE-MRI: it provides code for viewing a target slice from all available sequences for a specific target mri_id
      - For ``base_path``, pass in the directory that contains your train, val, and test subdirectories (containing subfolders for each mri_id, each with preprocessed .npy arrays for each sequence)
  - For MRNet: it provides code for viewing a target slice from the coronal, sagittal, and axial views for a specific target mri_id
