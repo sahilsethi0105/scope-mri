@@ -39,6 +39,10 @@ The data used in our study has been released on the [`Medical Imaging and Data R
 - [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs GradCam heat maps of what the model is "looking at" in each image
 - See the README in the grad_cam/ folder for specific commands
 
+## Additional Notes
+ - The commands in the [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
+ - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using a HPC
+
 ## Citation
 
 Please cite both papers associated with this repository and dataset **(UPDATE with SCOPE-MRI citation after arXiv post)**:
