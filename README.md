@@ -42,21 +42,24 @@ If you simply want to use this repo to get familiar with deep learning for MRIs/
 
 However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB). Then, follow the data preprocessing steps below. 
 
-## Preprocessing
+## Preprocessing SCOPE-MRI
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
+
+## Using the Repo with MRNet
+ - F
 
 ## Visualizing MRIs
  - F
 
-## Training/CV, tuning, and testing
+## Training, Cross-Validation, and Hyperparameter Tuning
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
 - [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py): tunes models using either MRNet data or SCOPE-MRI
-- See the README in the ```src/``` folder for specific commands
+- See the README in the ```src/``` folder for specific Python commands
 
-## Grad Cam: Interpreting what our models learned
-- [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs GradCam heat maps of what the model is "looking at" in each image
-- See the README in the ```grad_cam/``` folder for specific commands
+## Grad-CAM: Interpreting what a model learned
+- [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs Grad-CAM heat maps of what the model is "looking at" in each image (one heatmap for each slice in each MRI in the test set)
+- See the README in the ```grad_cam/``` folder for specific Python commands
 
 ## Additional Notes
  - The commands in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
