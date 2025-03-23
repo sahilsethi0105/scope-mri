@@ -94,6 +94,6 @@ Notes:
    - By default, we resize the MRI slices (to 256x256 for MRNet, and 400x400 for SCOPE-MRI), then center-crop to 224x224
    - We also normalize/standardize and apply augmentation in this file
    - We use the MONAI library for transformations (note that the library contains many additional medical imaging-specific transformations that can be added)
- - ```models.py``` contains the model architectures
-   - For an individual MRI sequence, we pass each slice through the feature extractor 
+ - ```models.py``` contains the model architectures (see our papers for additional details)
+ - ```training_functions.py``` contains helper functions as well as ```train_model()```, ```evaluate_model()```, and ```cross_validate_model()```
  - ```semiexternal_eval.py``` is a file for running inference on an external test set. It follows the same logic as ```labrum_train.py``` when ```num_epochs=0```. 
