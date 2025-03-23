@@ -42,10 +42,6 @@ echo ""
 
 python3 MRI_and_metadata_import.py >data_import.txt
 
-# Count and print the number of files in the specified directory
-file_count=$(ls /gpfs/data/orthopedic-lab/HIRO_Image-Data/HIR\ 17404/preprocessed_MRIs/semiexternal_validation | wc -l)
-echo "Number of files in the semiexternal_validation directory: $file_count"
-
 deactivate
 
 
