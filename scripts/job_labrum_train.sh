@@ -54,7 +54,7 @@ module load gcc/12.1.0
 module load python/3.10.5
 module list 2>&1 
 
-source /gpfs/data/orthopedic-lab/ortho_ml/ortho_venv/bin/activate
+conda activate /gpfs/data/orthopedic-lab/ortho_env
 
 # Run the Python script with parsed arguments
 python3 labrum_train.py \
@@ -83,5 +83,5 @@ python3 labrum_train.py \
   --n_cycles "${n_cycles:-5}" \
   --pos_weight "$pos_weight" > "${job_name}_results.txt"
 
-deactivate
+conda deactivate
 
