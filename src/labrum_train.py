@@ -41,7 +41,7 @@ parser.add_argument('--model_type', type=str, required=True, help='Model type (R
 parser.add_argument('--lr', type=float, required=True)
 parser.add_argument('--weight_decay', type=float, required=True)
 parser.add_argument('--dropout_rate', type=float, required=False)
-parser.add_argument('--augment', type=str2bool, nargs='?', const=True, default=False, help="Whether to apply data augmentation during training") # Keep this True always
+parser.add_argument('--augment', type=str2bool, nargs='?', const=True, default=True, help="Whether to apply data augmentation during training") # Keep this True always
 parser.add_argument('--augment_factor', type=int, default=10) # Augmentation factor for positive class (label = 1)
 parser.add_argument('--augment_factor_0', type=int, default=10)  # Augmentation factor for negative class (label = 0)
 parser.add_argument('--model_weights', type=str, default=None, help='Path to model weights to initialize from') # Use this argument to specify a model pre-trained on MRNet
@@ -55,6 +55,8 @@ parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weigh
 parser.add_argument('--script_mode', type=str, default='train', help='Script mode (train or CV)') # CV will initiate cross-validation using N cycles/folds
 parser.add_argument('--ret_val_probs', type=str2bool, nargs='?', const=True, default=False, help="Whether to return inference probabilities on validation set")
 parser.add_argument('--n_cycles', type=int, default=5, help='Number of folds for CV') 
+parser.add_argument('--patience', type=int, default=10, help='Patience for early stopping') 
+parser.add_argument('--save_checkpoints', type=str2bool, nargs='?', const=True, default=False, help="Whether to save weights each epoch for checkpointing") 
 parser.add_argument('--seed', type=int, default=None, help='random seed for folds for CV') # Specify a random seed for reproducibility
 
 args = parser.parse_args()
@@ -305,11 +307,11 @@ if (args.script_mode == 'train'):
                 save_path=checkpoint_dir, 
                 start_epoch=start_epoch, 
                 best_acc=best_acc, 
-                save_checkpoints=False, #set to True to save model weights every epoch 
+                save_checkpoints=args.save_checkpoints, #set to True to save model weights every epoch, and then be able to resume from checkpoint
                 csv_path=csv_path, 
                 args=args, 
                 writer=writer,
-                early_stopping_patience=10
+                early_stopping_patience=args.patience
         )
 
         print("Model training complete")
