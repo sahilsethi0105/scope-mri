@@ -60,7 +60,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 
 ## Grad-CAM: Interpreting what a model learned
 - [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs Grad-CAM heat maps of what the model is "looking at" in each image (one heatmap for each slice in each MRI in the test set)
-- See the README in the ```grad_cam/``` folder for specific Python commands
+- See [`grad_cam/README.md`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/README.md) for additional information
 
 ## Additional Notes
  - The commands in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
