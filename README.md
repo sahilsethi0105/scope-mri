@@ -1,4 +1,4 @@
-# scope-mri: Intro to deep learning for MRIs/CTs
+# SCOPE-MRI: Intro to deep learning for MRIs/CTs
 This repository is meant to be a useful resource for getting started with using deep learning on MRIs and CT scans. It accompanies the release of the SCOPE-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper:
 
 > [**SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses**](...)<br/>
