@@ -9,12 +9,21 @@ This is an extension of the work described in our prior paper:
 > [**Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning**](https://arxiv.org/abs/2412.06717)<br/>
   Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis.</b>, In Press at SPIE.
 
-Although the repository was developed for the above papers, we have written the code so that it can be easily adapted for training, tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
+Although the repo was developed for the above papers, we have written the code so that it can be easily adapted for training, hyperparameter tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
  - In ```loader.py```, create your custom dataset structure (include any desired preprocessing and/or augmentation code), and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
- - You can also add any custom models into ```models.py```
- - Results will be automatically saved to master CSV files and TensorBoard logs
+ - Many of input arguments for ```labrum_train.py``` and ```labrum_tune.py``` are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument)
+   - When set to ```mrnet```, many of these arguments are not used)
+   - You can remove and/or modify these based on your code for preparing dataloaders
+ - You can add custom models or modify the existing ones in [`models.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/models.py)
+ - By default, the weights from the epoch with the highest validation accuracy are preserved for inference across training, CV, and tuning; early stopping patien
+ - If you want to initialize a model with pre-trained weights, just pass the path to the model weights into the ```model_weights``` argument 
+ - If you just want to do inference, pass the path to trained model weights into the ```model_weights``` argument and set ```num_epochs``` to 0
+ - Across the whole repo, the default behavior is for the weights from the epoch with the highest validation AUC to be retained for inference; these weights are saved regardless of if you have checkpointing on or not
+ - Results will be automatically saved to CSV files and TensorBoard logs; exact predictions/logits and labels for each MRI are saved to ```{job_name}_probs.csv``` and ```{job_name}_val_probs.csv``` files to facilitate pushing to GitHub from an HPC, then pulling locally and creating figures in a Jupyter notebook
+ - If you set the ```save_checkpoints``` argument in ```labrum_train.py``` to True, then weights will be saved each epoch and the code can resume from the latest checkpoint if training is interrupted (but beware of the storage cost; it is best to remove all the checkpoints after successfully training because they are no longer needed due to the highest val AUC epoch weights being saved separately)
+ - For cross-validation, the code will automatically handle resuming from the start of the latest fold/cycle if interrupted, but only if you pass a random seed into the ```seed``` argument (to ensure consistant splitting)
+ - For hyperparameter tuning, model weights are only saved if they achieve above a certain threshold at inference (default is AUC > 0.70); for checkpointing, the Optuna study itself is saved and automatically resumed if you run the code again after being interrupted (but the model weights are not saved by default)
  - For multi-class classification, you will need to update the loss functions accordingly, as well as possibly modify some of the logging
- - Inference results are saved to ```{job_name}_probs.csv``` and ```{job_name}_val_probs.csv``` files to facilitate pushing to GitHub from a HPC, then pulling locally and creating figures in a Jupyter notebook
 
 ## Installation
 
@@ -30,7 +39,9 @@ conda activate ortho_env
 ```
 
 ## Accessing the Data
-The data used in our study has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB). Then, follow the data preprocessing steps below.
+If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. 
+
+However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB). Then, follow the data preprocessing steps below. 
 
 ## Preprocessing
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
@@ -50,18 +61,18 @@ The data used in our study has been released on the [`Medical Imaging and Data R
 
 ## Additional Notes
  - The commands in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
- - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using a HPC
- -  If using a HPC, you will want an easy way to view the GradCAM outputs because running [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/grad_cam_med.py) will produce heatmaps for every slice of every MRI in your test set; we found that the easiest way is to ssh into your computer with VSCode, then use the file explorer to click around and look at the slices
- - The training/tuning files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code)
+ - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using an HPC
+ -  If using an HPC, you will want an easy way to view the GradCAM outputs because running [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/grad_cam_med.py) will produce heatmaps for every slice of every MRI in your test set; we found that the easiest way is to ssh into your computer with VSCode, then use the file explorer to click around and look at the slices
+ - The files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code)
 
-  To view TensorBoard logs, do (after activating the conda env):
+  To view TensorBoard logs, after activating your conda environment (with TensorBoard installed), do:
   ```
   tensorboard --logdir=/path/to/logdir/job_name --port 6006
   ```
-   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in the training/tuning file
+   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in ```labrum_train.py``` and ```labrum_tune.py ```
    - Use the ```'job_name'``` from when you began training/tuning
-   - Then, either access: ```http://localhost:6006```
-   - Or if on an HPC, ssh into the computer with a new terminal tab: ```ssh -L 6006:localhost:6006 myaccount@example_computer.edu```
+   - Then, either access ```http://localhost:6006``` in your browser
+   - Or if on an HPC, ssh into the computer with a new terminal tab ```ssh -L 6006:localhost:6006 myaccount@example_computer.edu```, then access ```http://localhost:6006``` in your browser
    - You can use a different port (6006 is chosen as an example)
 
 ## Citation
