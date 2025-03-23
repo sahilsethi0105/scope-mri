@@ -10,11 +10,15 @@ This is an extension of the work described in our prior paper:
   Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis.</b>, In Press at SPIE.
 
 Although the repo was developed for the above papers, we have written the code so that it can be easily adapted for training, hyperparameter tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
- - If you have your own dataset, [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py) and [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py) show how to go from the raw DICOM files to a final, preprocessed dataset
- - In ```loader.py```, create your custom dataset structure (include any desired additional preprocessing and/or augmentation code), and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
- - Many input arguments for ```labrum_train.py``` and ```labrum_tune.py``` are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument)
-   - When ```dataset_type``` is set to ```MRNet```, many of these arguments are not used
-   - You can remove and/or modify these based on your code for preparing dataloaders
+ - The information in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme), in [`grad_cam/README.md`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/README.md), and below covers getting started with the repo for either the Stanford MRNet knee MRI dataset or our SCOPE-MRI dataset
+ - If you have your own dataset, [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py) and [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py) show how to go from the raw DICOM files to a final, preprocessed dataset; follow the instructions below for using the SCOPE-MRI dataset, but make the following adjustments:
+   - In the ```main()``` function and ```parser.add_argument()``` statements of [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py), adjust the number of labels based on how many your dataset has (eg, if only one binary label, then remove ```args.label_column2``` and ```args.label_column3```); the split will be stratified by these labels
+   - Specify a random seed for ```random_state``` in ```stratified_split_data_by_mri_id()``` if desired (eg, 42); also adjust ```val_size``` and ```test_size``` as desired (default uses 70% train/10% val/20% test)
+   - In [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py), adjust transformations/augmentations and preprocessing as desired (eg, we currently center-crop each slice to focus on the region of interest)
+ - If you prefer to customize your dataset structure and dataloader code, do so in [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py)
+     - Include any desired additional preprocessing and/or augmentation code)
+     - Update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
+     - Many input arguments for ```labrum_train.py``` and ```labrum_tune.py``` are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument); you can remove and/or modify these based on your code for preparing dataloaders
  - You can add custom models or modify the existing ones in [`models.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/models.py)
  - This version of the codebase is designed to train all models on a single GPU, but manually implements much of the same behavior as PyTorch Lightning (eg, checkpointing, Optuna integration, TensorBoard logging); if you wish to train on multiple GPUs, we recommend using [`this article`](https://lightning.ai/docs/pytorch/stable/starter/converting.html) to adapt the code 
    - You will also need to change ```job_labrum_train.sh``` to request multiple GPUs on your HPC
@@ -45,6 +49,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
   - Note that these each contain subfolders for each MRI_ID, each with one preprocessed .npy array for each sequence in that MRI
 - Note that we manually filtered out sequences that were repeated (the repeat was kept and original was removed, with the assumption that the poor image quality let to the repreat sequence) _**UPDATE WITH EXACT LIST OR Instructions**_
 - _**UPDATE WITH How to Get Labels and Metadata**_
+- Specify a random seed for ```random_state``` in ```stratified_split_data_by_mri_id()``` if desired (eg, 42)
 
 ## Using the Repo with MRNet
  - First, fill out the dataset research use agreement with your email [`here`](https://stanfordmlgroup.github.io/competitions/mrnet/), and you should automatically receive a link to download the data 
