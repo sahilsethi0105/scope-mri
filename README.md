@@ -1,5 +1,5 @@
 # scope-mri
-This repository accompanies the release of the SCOPE-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper:
+This repository is meant to be a useful resource for getting started with using deep learning on MRIs and CT scans. It accompanies the release of the SCOPE-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper:
 
 > [**SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses**](...)<br/>
   Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>arXiv</b>, preprint under review.
@@ -9,7 +9,7 @@ This is an extension of the work described in our prior paper:
 > [**Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning**](https://arxiv.org/abs/2412.06717)<br/>
   Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis.</b>, In Press at SPIE.
 
-Note that this repository can be easily adapted for training, tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
+Although the repository was developed for the above papers, we have written the code so that it can be easily adapted for training, tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
  - In ```loader.py```, create your custom dataset structure (include any desired preprocessing and/or augmentation code), and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
  - You can also add any custom models into ```models.py```
  - Results will be automatically saved to master CSV files and TensorBoard logs
