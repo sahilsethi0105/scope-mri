@@ -20,7 +20,7 @@ Notes:
  - ```use_label```: 1=calculate gradients with respect to label, 0=do not (keep at 1 for default)
  - ```all_slices```: 0=use middle slice of each MRI, 1=iterate through all slices of each MRI
  - The rest of the input arguments should be consistent with what you used in ```labrum_train.py``` or ```labrum_tune.py``` to train the model
- - If using an HPC, you will want an easy way to view the GradCAM outputs because running [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/grad_cam_med.py) will produce heatmaps for every slice of every MRI in your test set; we found that the easiest way is to ssh into your computer with VSCode, then use the file explorer to click around and look at the slices
+ - If using an HPC, you will want an easy way to view the Grad-CAM outputs because running [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/grad_cam_med.py) will produce heatmaps for every slice of every MRI in your test set; we found that the easiest way is to ssh into your computer with VSCode, then use the file explorer to click around and look at the slices
 
 Examples of Grad-CAM heatmaps are shown below: 
 ![Alt text](resize_GradCAMFigure.png)
