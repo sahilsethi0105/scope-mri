@@ -7,7 +7,6 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --partition=gpuq
 #SBATCH --time=00-18:00:00
-# --nodelist=cri22cn401
 
 # Function to parse named arguments
 parse_args() {
@@ -40,7 +39,7 @@ module load gcc/12.1.0
 module load python/3.10.5
 module list 2>&1
 
-source /gpfs/data/orthopedic-lab/ortho_ml/ortho_venv/bin/activate
+conda activate /gpfs/data/orthopedic-lab/ortho_env 
 
 # Run the Python script with parsed arguments
 python3 semiexternal_eval.py \
@@ -54,5 +53,5 @@ python3 semiexternal_eval.py \
   --num_workers "${num_workers:-4}" \
   --job_name "$job_name" > "${job_name}_results.txt"
 
-deactivate
+conda deactivate
 
