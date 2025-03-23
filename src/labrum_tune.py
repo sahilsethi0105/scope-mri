@@ -19,11 +19,6 @@ import pickle
 from torch.utils.tensorboard import SummaryWriter
 import joblib
 
-SEED = 42  
-random.seed(SEED)
-np.random.seed(SEED)
-torch.manual_seed(SEED)
-
 def save_study(study, filename):
     joblib.dump(study, filename)
 
@@ -360,8 +355,14 @@ if __name__ == "__main__":
     parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weight to "automatic" or an integer value.')
     parser.add_argument('--n_trials', type=int, default=50, help='Number of trials for hyperparameter tuning')
     parser.add_argument('--dataset_type', type=str, required=True, choices=['labrum', 'MRNet'], help='Dataset type (labrum or MRNet)')
+    parser.add_argument('--seed', type=int, default=42, help='random seed for reproducibility') 
 
     args = parser.parse_args()
+
+    SEED = args.seed  
+    random.seed(SEED)
+    np.random.seed(SEED)
+    torch.manual_seed(SEED)
 
     # Define the path where you want to save the study
     study_save_path = f"/gpfs/data/orthopedic-lab/ortho_ml/experiments/{args.job_name}_optuna_study.pkl"
