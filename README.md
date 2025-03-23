@@ -25,7 +25,7 @@ conda activate ortho_env
 
 ## Citation
 
-Please cite this work as **(UPDATE with SCOPE-MRI citation after arXiv post)**:
+Please cite both papers associated with this repository and dataset **(UPDATE with SCOPE-MRI citation after arXiv post)**:
 
 ```bibtex
 @misc{sethi2024noninvasivediagnosisbankartlesions,
@@ -38,7 +38,19 @@ Please cite this work as **(UPDATE with SCOPE-MRI citation after arXiv post)**:
       url={https://arxiv.org/abs/2412.06717}, 
 }
 ```
-## Data Availability
+```bibtex
+@misc{sethi2024noninvasivediagnosisbankartlesions,
+      title={Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning}, 
+      author={Sahil Sethi and Sai Reddy and Mansi Sakarvadia and Jordan Serotte and Darlington Nwaudo and Nicholas Maassen and Lewis Shi},
+      year={2024},
+      eprint={2412.06717},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2412.06717}, 
+}
+```
+
+## Accessing the Data
 The data used in our study has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB). Then, follow the data preprocessing steps below.
 
 ## Preprocessing
