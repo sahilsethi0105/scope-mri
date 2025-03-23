@@ -46,7 +46,11 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
  - F
 
 ## Visualizing MRIs
- - F
+ - [`visualize_MRIs.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/visualize_MRIs.ipynb): notebook for viewing the MRIs
+ - For SCOPE-MRI: it provides code for viewing a target slice from all available sequences for a specific target mri_id
+     - For ``base_path``, pass in the directory that contains your train, val, and test subdirectories (containing subfolders for each mri_id, each with preprocessed .npy arrays for each sequence)
+ - For MRNet: it provides code for viewing a target slice from the coronal, sagittal, and axial views for a specific target mri_id
+     - For ``base_path``, pass in the directory that contains the default MRNet 'train' and 'valid subdirectories (containing subfolders for each MRI view, each with preprocessed .npy arrays for each MRI)
 
 ## Training, Cross-Validation, Hyperparameter Tuning, and Ensembling
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
