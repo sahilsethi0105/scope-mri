@@ -7,7 +7,6 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --partition=gpuq
 #SBATCH --time=00-23:59:59
-# --nodelist=cri22cn404
 
 # Function to parse named arguments
 parse_args() {
