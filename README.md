@@ -32,9 +32,9 @@ Please cite this work as **(UPDATE with SCOPE-MRI citation after arXiv post)**:
 }
 ```
 ## Data Availability
-The data used in our study has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our scans in their system and download the DICOMs (~67 GB). The, follow the pre-processing steps below.
+The data used in our study has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB). Then, follow the data preprocessing steps below.
 
-## Initial data import
+## Preprocessing
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py): 
 
