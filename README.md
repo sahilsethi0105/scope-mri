@@ -42,16 +42,17 @@ The data used in our study has been released on the [`Medical Imaging and Data R
 ## Additional Notes
  - The commands in the [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
  - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using a HPC
- - The training/tune files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code); to view the logs, do:
-```bash
-tensorboard --logdir=/path/to/logdir/job_name --port 6006
-```
-```
-Then, either access: http://localhost:6006
-Or if on an HPC, ssh into the computer with a new terminal tab: ssh -L 6006:localhost:6006 myacount@example_computer.edu
- - Replace 'path/to/logdir/' with the actual path, and make sure to update it in the training/tuning file, and use the 'job_name' from when you began training/tuning
- - You can use a different port (6006 is chosen as an example)
-```
+ - The training/tuning files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code)
+
+  To view TensorBoard logs, do:
+  ```
+  tensorboard --logdir=/path/to/logdir/job_name --port 6006
+  ```
+   - Then, either access: ```http://localhost:6006```
+  Or if on an HPC, ssh into the computer with a new terminal tab: ```ssh -L 6006:localhost:6006 myacount@example_computer.edu```
+   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in the training/tuning file, and use the 'job_name' from when you began training/tuning
+   - You can use a different port (6006 is chosen as an example)
+  
  - If using a HPC, you will want an easy way to view the GradCAM outputs, as running [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/grad_cam_med.py) will produce heatmaps for every slice of every MRI in your test set; we found that the easiest way is to ssh into your computer with VSCode, then use the file explorer to click around and look at the slices
 
 ## Citation
