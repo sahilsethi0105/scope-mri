@@ -57,7 +57,7 @@ parser.add_argument('--ret_val_probs', type=str2bool, nargs='?', const=True, def
 parser.add_argument('--n_cycles', type=int, default=5, help='Number of folds for CV') 
 parser.add_argument('--patience', type=int, default=10, help='Patience for early stopping') 
 parser.add_argument('--save_checkpoints', type=str2bool, nargs='?', const=True, default=False, help="Whether to save weights each epoch for checkpointing") 
-parser.add_argument('--seed', type=int, default=None, help='random seed for folds for CV') # Specify a random seed for reproducibility
+parser.add_argument('--seed', type=int, default=42, help='random seed for folds for CV') # Specify a random seed for reproducibility
 
 args = parser.parse_args()
 
