@@ -10,10 +10,11 @@ This is an extension of the work described in our prior paper:
   Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis.</b>, In Press at SPIE.
 
 Note that this repository can be easily adapted for training, tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
- - In ```loader.py```, create your custom dataset structure, and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
+ - In ```loader.py```, create your custom dataset structure (include any desired preprocessing and/or augmentation code), and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
  - You can also add any custom models into ```models.py```
- - Results will be automatically saved to master CSV results files and TensorBoard logs
+ - Results will be automatically saved to master CSV files and TensorBoard logs
  - For multi-class classification, you will need to update the loss functions accordingly, as well as possibly modify some of the logging
+ - Inference results are saved to ```{job_name}_probs.csv``` and ```{job_name}_val_probs.csv``` files to facilitate pushing to GitHub from a HPC, then pulling locally and creating figures in a Jupyter notebook
 
 ## Installation
 
@@ -33,7 +34,10 @@ The data used in our study has been released on the [`Medical Imaging and Data R
 
 ## Preprocessing
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
-- [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py): 
+- [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
+
+## Visualizing MRIs
+ - F
 
 ## Training/CV, tuning, and testing
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
