@@ -66,5 +66,12 @@ python3 labrum_tune.py \
   --dataset_type 'MRNet' \
   --pos_weight 'automatic' 
 ```
-
-
+## Summary of remaining files
+ - ```MRI_and_metadata_import.py``` contains the logic
+ - ```loader.py``` contains all data loading code
+  - By default, we resize the MRI slices (to 256x256 for MRNet, and 400x400 for SCOPE-MRI), then center-crop to 224x224
+  - We also normalize/standardize and apply augmentation in this file
+  - We use the MONAI library for transformations (note that the library contains many additional medical imaging-specific transformations that can be added)
+ - ```models.py``` contains the model architectures
+  - For an individual MRI sequence, we pass each slice through the feature extractor 
+ - ```semiexternal_eval.py``` is a file for running inference on an external test set. It follows the same logic as ```labrum_train.py``` when ```num_epochs=0```. 
