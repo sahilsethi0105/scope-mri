@@ -39,20 +39,20 @@ parser.add_argument('--num_epochs', type=int, required=True)
 parser.add_argument('--job_name', type=str, required=True) # Job name for saving results to subfolders
 parser.add_argument('--model_type', type=str, required=True, help='Model type (ResNet50, MRNet, or CNN3D)')
 parser.add_argument('--lr', type=float, required=True)
-parser.add_argument('--weight_decay', type=float, required=True)
-parser.add_argument('--dropout_rate', type=float, required=False)
+parser.add_argument('--weight_decay', type=float, required=True) # L2 regularization
+parser.add_argument('--dropout_rate', type=float, required=False) # Passed in during model initialization, but you may or may not use it in your architecture
 parser.add_argument('--augment', type=str2bool, nargs='?', const=True, default=True, help="Whether to apply data augmentation during training") # Keep this True always
 parser.add_argument('--augment_factor', type=int, default=10) # Augmentation factor for positive class (label = 1)
 parser.add_argument('--augment_factor_0', type=int, default=10)  # Augmentation factor for negative class (label = 0)
-parser.add_argument('--model_weights', type=str, default=None, help='Path to model weights to initialize from') # Use this argument to specify a model pre-trained on MRNet
+parser.add_argument('--model_weights', type=str, default=None, help='Path to model weights to initialize from') # Use this argument to specify a pre-trained model (eg, on MRNet)
 parser.add_argument('--transform_val', type=str2bool, nargs='?', const=True, default=True, help="Whether to apply data augmentation during training") # Keep this True always
-parser.add_argument('--scheduler', type=str, default='ReduceLROnPlateau', help='Scheduler type (ReduceLROnPlateau, CosineAnnealingLR)')
+parser.add_argument('--scheduler', type=str, default='ReduceLROnPlateau', help='Scheduler type (ReduceLROnPlateau, CosineAnnealingLR, CyclicLR)')
 parser.add_argument('--sequence_type', type=str, default='all', help='Sequence type to include (e.g., T1, T2, all)') 
 parser.add_argument('--fat_sat', type=str, default='all', help='Fat saturation to include (Yes, No, all)')
 parser.add_argument('--contrast_or_no', type=str, default='all', help='Contrast type to include (WO, W, WWO, all)') # Note that we exclude WWO in our study
 parser.add_argument('--dataset_type', type=str, required=True, choices=['labrum', 'MRNet'], help='Dataset type (labrum or MRNet)')
-parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weight to "automatic" or an integer value.') # We always use 'automatic'
-parser.add_argument('--script_mode', type=str, default='train', help='Script mode (train or CV)') # CV will initiate cross-validation using N cycles/folds
+parser.add_argument('--pos_weight', type=str, required=True, help='Set pos_weight to "automatic" or an integer value.') # Class weight for positive class; we always use 'automatic'
+parser.add_argument('--script_mode', type=str, default='train', help='Script mode (train or CV)') # Passing 'CV' will initiate cross-validation using N cycles/folds
 parser.add_argument('--ret_val_probs', type=str2bool, nargs='?', const=True, default=False, help="Whether to return inference probabilities on validation set")
 parser.add_argument('--n_cycles', type=int, default=5, help='Number of folds for CV') 
 parser.add_argument('--patience', type=int, default=10, help='Patience for early stopping') 
