@@ -23,6 +23,13 @@ Although the repo was developed for the above papers, we have written the code s
  - If you set the ```save_checkpoints``` argument in ```labrum_train.py``` to True, then weights will be saved each epoch and the code can resume from the latest checkpoint if training is interrupted (but beware of the storage cost; it is best to remove all the checkpoints after successfully training because they are no longer needed due to the highest val acc epoch weights being saved separately)
  - For cross-validation, the code will automatically handle resuming from the start of the latest fold/cycle if interrupted, but only if you pass a random seed into the ```seed``` argument (to ensure consistent splitting)
  - For hyperparameter tuning, model weights are only saved if they achieve above a certain threshold at inference (default is AUC > 0.70); for checkpointing, the Optuna study itself is saved and automatically resumed if you run the code again after being interrupted (but the model weights are not saved by default)
+ - Note that the performance metrics printed and logged to TensorBoard are all at the MRI sequence level. Each input MRI may contain several sequences, such as T1 coronal, T2 sagittal, etc.
+   - We select which view (coronal, sagittal, or axial) to use using the ```view``` argument
+   - For each view, we select which sequences to use using the ```sequence_type``` and ```fat_sat``` arguments (we use all available sequences for a given view in our paper, excluding localization/scout/survey sequences); these arguments are ignored for the MRNet dataset as they only have one sequence per view
+   - All dataset splits in this codebase are done at the _MRI_ID_ level, which ensures that sequences from the same original MRI are in the same split
+   - The ```{job_name}_probs.csv``` and ```{job_name}_val_probs.csv``` results files can be used to aggregate predictions from the individual MRI sequences to the MRI_ID level (we simply average the sequence probabilities)
+   - If you train separate models on sagittal, axial, and coronal sequences, you can then combine these final MRI_ID level probabilities (we simply average these across the three views)
+   - A simple version of the ensembling script is provided _**ADD_ENSEMBLE_CODE**_
  - This version of the codebase is designed to train all models on a single GPU, but manually implements much of the same behavior as PyTorch Lightning (eg, checkpointing, Optuna integration, TensorBoard logging)
    - We originally used PyTorch Lightning and then switched to the current version of the code
    - ____ folder has our old PyTorch Lightning version, but we cannot guarantee it's compatibility with the rest of the codebase
