@@ -15,7 +15,6 @@ Although the repo was developed for the above papers, we have written the code s
    - When set to ```MRNet```, many of these arguments are not used
    - You can remove and/or modify these based on your code for preparing dataloaders
  - You can add custom models or modify the existing ones in [`models.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/models.py)
- - By default, the weights from the epoch with the highest validation accuracy are preserved for inference across training, CV, and tuning
  - If you want to initialize a model with pre-trained weights, just pass the path to the model weights into the ```model_weights``` argument 
  - If you just want to do inference, pass the path to trained model weights into the ```model_weights``` argument and set ```num_epochs``` to 0
  - Across the whole repo, the default behavior is for the weights from the epoch with the highest validation accuracy to be retained for inference; these weights are saved regardless of if you have checkpointing on or not
