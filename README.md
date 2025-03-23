@@ -23,9 +23,9 @@ Although the repo was developed for the above papers, we have written the code s
  - If you set the ```save_checkpoints``` argument in ```labrum_train.py``` to True, then weights will be saved each epoch and the code can resume from the latest checkpoint if training is interrupted (but beware of the storage cost; it is best to remove all the checkpoints after successfully training because they are no longer needed due to the highest val acc epoch weights being saved separately)
  - For cross-validation, the code will automatically handle resuming from the start of the latest fold/cycle if interrupted, but only if you pass a random seed into the ```seed``` argument (to ensure consistent splitting)
  - For hyperparameter tuning, model weights are only saved if they achieve above a certain threshold at inference (default is AUC > 0.70); for checkpointing, the Optuna study itself is saved and automatically resumed if you run the code again after being interrupted (but the model weights are not saved by default)
- - This version of the codebase is designed to train all models on a single GPU, but manually implements much of the same behavior as PyTorch lightning (eg, checkpointing, Optuna integration, TensorBoard logging)
+ - This version of the codebase is designed to train all models on a single GPU, but manually implements much of the same behavior as PyTorch Lightning (eg, checkpointing, Optuna integration, TensorBoard logging)
    - We originally used PyTorch Lightning and then switched to the current version of the code
-   - ____ folder has our old PyTorch Lighning version, but we cannot guarantee it's compatibility with the rest of the codebase
+   - ____ folder has our old PyTorch Lightning version, but we cannot guarantee it's compatibility with the rest of the codebase
    - Note that the code defaults to using all available GPUs, so you will need to change ```job_labrum_train.sh``` to request multiple GPUs on your HPC
  - For multi-class classification, you will need to update the loss function and classifier parts of the models accordingly, as well as possibly modify some of the logging
 
