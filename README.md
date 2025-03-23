@@ -33,11 +33,11 @@ The data used in our study has been released on the [`Medical Imaging and Data R
 ## Training/CV, tuning, and testing
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
 - [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py): tunes models using either MRNet data or SCOPE-MRI
-- See the README in the src/ folder for specific commands
+- See the README in the ```src/``` folder for specific commands
 
 ## Grad Cam: Interpreting what our models learned
 - [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs GradCam heat maps of what the model is "looking at" in each image
-- See the README in the grad_cam/ folder for specific commands
+- See the README in the ```grad_cam/``` folder for specific commands
 
 ## Additional Notes
  - The commands in the [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
