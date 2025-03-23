@@ -23,7 +23,7 @@ Although the repo was developed for the above papers, we have written the code s
  - If you set the ```save_checkpoints``` argument in ```labrum_train.py``` to True, then weights will be saved each epoch and the code can resume from the latest checkpoint if training is interrupted (but beware of the storage cost; it is best to remove all the checkpoints after successfully training because they are no longer needed due to the highest val acc epoch weights being saved separately)
  - For cross-validation, the code will automatically handle resuming from the start of the latest fold/cycle if interrupted, but only if you pass a random seed into the ```seed``` argument (to ensure consistent splitting)
  - For hyperparameter tuning, model weights are only saved if they achieve above a certain threshold at inference (default is AUC > 0.70); for checkpointing, the Optuna study itself is saved and automatically resumed if you run the code again after being interrupted (but the model weights are not saved by default)
- - For multi-class classification, you will need to update the loss function accordingly, as well as possibly modify some of the logging
+ - For multi-class classification, you will need to update the loss function and classifier parts of the models accordingly, as well as possibly modify some of the logging
 
 ## Installation
 
