@@ -43,6 +43,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
 - For all files in this codebase, **your ```preprocessed_folder``` should be the final folder that contains your ```train```, ```val```, and ```test``` subfolder**
   - Note that these each contain subfolders for each MRI_ID, each with one preprocessed .npy array for each sequence in that MRI
+- Note that we manually filtered out sequences that were repeated (the repeat was kept and original was removed, with the assumption that the poor image quality let to the repreat sequence) _**UPDATE WITH EXACT LIST OR Instructions**_
 
 ## Using the Repo with MRNet
  - First, fill out the dataset research use agreement with your email [`here`](https://stanfordmlgroup.github.io/competitions/mrnet/), and you should automatically receive a link to download the data 
