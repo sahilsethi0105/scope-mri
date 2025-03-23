@@ -17,7 +17,7 @@ module load gcc/12.1.0
 module load python/3.10.5
 module list 2>&1 
 
-source /gpfs/data/orthopedic-lab/ortho_ml/ortho_venv/bin/activate
+conda activate /gpfs/data/orthopedic-lab/ortho_env
 
 pip list
 
@@ -42,7 +42,7 @@ echo ""
 
 python3 MRI_and_metadata_import.py >data_import.txt
 
-deactivate
+conda deactivate
 
 
 
