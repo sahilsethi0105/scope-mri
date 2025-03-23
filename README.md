@@ -52,7 +52,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
      - Labels for each are found in the corresponding CSVs for each spit (eg, train-abnormal.csv and val-abnormal.csv for the 'abnormal' label, which is what we use for pre-training)
  - Simply pass in the path to the base folder that contains the original ```train``` and ```valid``` subfolders for the ```preprocessed_folder``` argument in all of the files in this codebase, and the files should all run properly
    - Make sure to adjust the other input arguments as desired (eg, ``model_type``, ``view``, etc.)
-   - Arguments specific SCOPE-MRI, such as ```sequence_type``` and ```contrast_or_no``` will be ignored, so you can set them to any valid value
+   - Arguments specific to SCOPE-MRI, such as ```sequence_type``` and ```contrast_or_no``` will be ignored, so you can set them to any valid value
 
 ## Visualizing MRIs
  - [`visualize_MRIs.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/visualize_MRIs.ipynb): notebook for viewing the MRIs
