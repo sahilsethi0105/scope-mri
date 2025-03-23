@@ -56,7 +56,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 - [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py): trains models, does cross-validation, and does inference using either MRNet data or SCOPE-MRI
 - [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py): tunes models using either MRNet data or SCOPE-MRI
 - [`ensemble.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/ensemble.ipynb): combines models trained on separate views, and provides performance metrics at the MRI_ID level
-- See the README in the ```src/``` folder for specific Python commands
+- See [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) for additional information
 
 ## Grad-CAM: Interpreting what a model learned
 - [`grad_cam_med.py`](https://github.com/sahilsethi0105/scope-mri/blob/grad_cam/grad_cam/grad_cam_med.py): outputs Grad-CAM heat maps of what the model is "looking at" in each image (one heatmap for each slice in each MRI in the test set)
