@@ -51,7 +51,8 @@ The data used in our study has been released on the [`Medical Imaging and Data R
   ```
    - Then, either access: ```http://localhost:6006```
    - Or if on an HPC, ssh into the computer with a new terminal tab: ```ssh -L 6006:localhost:6006 myaccount@example_computer.edu```
-   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in the training/tuning file, and use the 'job_name' from when you began training/tuning
+   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in the training/tuning file
+   - Use the ```'job_name'``` from when you began training/tuning
    - You can use a different port (6006 is chosen as an example)
 
 ## Citation
