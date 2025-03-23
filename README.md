@@ -1,7 +1,7 @@
 # scope-mri
 This repository accompanies the release of the SCOPE-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper _SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses._ [`Link to Paper`](...)
 
-This dataset was first described in our prior paper: [`Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning`](https://arxiv.org/abs/2412.06717). Sethi, S., Reddy, S., Sakavadia, M., Serotte, J., Nwaudo, D., Maassen, N., & Shi, L. Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis. 
+This is an extension of the work described in our prior paper: [`Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning`](https://arxiv.org/abs/2412.06717). Sethi, S., Reddy, S., Sakavadia, M., Serotte, J., Nwaudo, D., Maassen, N., & Shi, L. Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis. 
 
 ## Installation
 
