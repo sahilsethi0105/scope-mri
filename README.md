@@ -43,7 +43,16 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
 
 ## Using the Repo with MRNet
- - F
+ - First, fill out the dataset research use agreement with your email [`here`](https://stanfordmlgroup.github.io/competitions/mrnet/), and you should automatically receive a link to download the data 
+ - If they are no longer maintaining that website, they have also posted it [`here`](https://aimi.stanford.edu/datasets/mrnet-knee-mris)
+ - After unzipping the folder, you should see ```train``` and ```valid``` subfolders
+     - Our code uses the `valid` set as a hold-out test set, and dynamically selects a 120-MRI subset of the ```train``` data to monitor progresss as a validation/tuning set
+     - You can adjust this by changing ```create_stratified_validation_set()``` and when it is called in ```prepare_datasets()``` in [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py)
+ - Their dataset contains three binary labels: 'acl', 'meniscus', and 'abnormal'
+     - Labels for each are found in the corresponding CSVs for each spit (eg, train-abnormal.csv and val-abnormal.csv for the 'abnormal' label, which is what we use for pre-training)
+ - Simply pass in the path to the base folder that contains the original ```train``` and ```valid``` subfolders for the ```preprocessed_folder``` argument in all of the files in this codebase, and it should run properly
+   - Make sure to adjust the other input arguments as desired (eg, ``model_type``, ``view``, etc.)
+   - Arguments specific SCOPE-MRI, such as ```sequence_type``` and ```contrast_or_no``` will be ignored, so you can set them to any valid value
 
 ## Visualizing MRIs
  - [`visualize_MRIs.ipynb`](https://github.com/sahilsethi0105/scope-mri/blob/main/visualize_MRIs.ipynb): notebook for viewing the MRIs
