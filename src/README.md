@@ -33,6 +33,7 @@ python3 labrum_train.py \
   --n_cycles 5 \
   --pos_weight 'automatic' 
 ```
+Note that the comments and help messages in ```labrum_train.py``` and ```labrum_tune.py``` provide detailed explanations of each input argument.
 
 ## Tuning
 Filepaths to update in ```labrum_tune.py```: 
@@ -65,4 +66,5 @@ python3 labrum_tune.py \
   --dataset_type 'MRNet' \
   --pos_weight 'automatic' 
 ```
+
 
