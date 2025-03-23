@@ -12,7 +12,7 @@ This is an extension of the work described in our prior paper:
 Although the repo was developed for the above papers, we have written the code so that it can be easily adapted for training, hyperparameter tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans. 
  - In ```loader.py```, create your custom dataset structure (include any desired preprocessing and/or augmentation code), and update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
  - Many of input arguments for ```labrum_train.py``` and ```labrum_tune.py``` are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument)
-   - When set to ```mrnet```, many of these arguments are not used)
+   - When set to ```MRNet```, many of these arguments are not used)
    - You can remove and/or modify these based on your code for preparing dataloaders
  - You can add custom models or modify the existing ones in [`models.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/models.py)
  - By default, the weights from the epoch with the highest validation accuracy are preserved for inference across training, CV, and tuning; early stopping patien
