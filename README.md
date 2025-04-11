@@ -111,14 +111,17 @@ Please cite both papers associated with this repository and dataset **(UPDATE wi
 }
 ```
 ```bibtex
-@misc{sethi2024noninvasivediagnosisbankartlesions,
-      title={Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning}, 
-      author={Sahil Sethi and Sai Reddy and Mansi Sakarvadia and Jordan Serotte and Darlington Nwaudo and Nicholas Maassen and Lewis Shi},
-      year={2024},
-      eprint={2412.06717},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.06717}, 
+@inproceedings{sethi_toward_2025,
+	title = {Toward non-invasive diagnosis of {Bankart} lesions with deep learning},
+	volume = {13407},
+	url = {https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13407/134073G/Toward-non-invasive-diagnosis-of-Bankart-lesions-with-deep-learning/10.1117/12.3046251.full},
+	doi = {10.1117/12.3046251},
+	booktitle = {Medical {Imaging} 2025: {Computer}-{Aided} {Diagnosis}},
+	publisher = {SPIE},
+	author = {Sethi, Sahil and Reddy, Sai and Sakarvadia, Mansi and Serotte, Jordan and Nwaudo, Darlington and Maassen, Nicholas and Shi, Lewis},
+	month = apr,
+	year = {2025},
+	pages = {854--863},
 }
 ```
 
