@@ -7,7 +7,7 @@ This repository is meant to be a useful resource for getting started with using 
 This is an extension of the work described in our prior paper:
 
 > [**Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning**](https://doi.org/10.1117/12.3046251)<br/>
-  Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis, 134073G.<b>
+  Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Proc. SPIE 13407, Medical Imaging 2025: Computer-Aided Diagnosis, 134073G</b>.
 
 Although the repo was developed for the above papers, we have written the code so that it can be easily adapted for training, hyperparameter tuning, cross-validating, and using GradCAM for any binary classification task using MRIs or CT scans.
  - The information in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme), in [`grad_cam/README.md`](https://github.com/sahilsethi0105/scope-mri/blob/main/grad_cam/README.md), and below covers getting started with the repo for either the Stanford MRNet knee MRI dataset or our SCOPE-MRI dataset
