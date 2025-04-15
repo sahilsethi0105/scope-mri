@@ -84,11 +84,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
  - The commands in [`src/README.md`](https://github.com/sahilsethi0105/scope-mri/tree/main/src#readme) are for directly running the files
  - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using an HPC
  - The files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code)
-
-  To view TensorBoard logs, after activating your conda environment (with TensorBoard installed), do:
-  ```
-  tensorboard --logdir=/path/to/logdir/job_name --port 6006
-  ```
+ - To view TensorBoard logs, after activating your conda environment (with TensorBoard installed), do: ```tensorboard --logdir=/path/to/logdir/job_name --port 6006```
    - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in ```labrum_train.py``` and ```labrum_tune.py ```
    - Use the ```'job_name'``` from when you began training/tuning
    - Then, either access ```http://localhost:6006``` in your browser
