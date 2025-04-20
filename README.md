@@ -17,11 +17,11 @@ Although the repo was developed for the above papers, we have written the code s
    - In [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py), adjust transformations/augmentations and preprocessing as desired (we currently center-crop each slice to focus on the region of interest)
  - If you prefer to customize your dataset structure and dataloader code, do so in [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py)
      - Include any desired additional preprocessing and/or augmentation code)
-     - Update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for ```labrum_train.py``` and ```labrum_tune.py```, respectively)
-     - Many input arguments for ```labrum_train.py``` and ```labrum_tune.py``` are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument); you can remove and/or modify these based on your code for preparing dataloaders
+     - Update ```prepare_and_create_loaders()``` and ```prepare_and_create_loaders_from_params()``` accordingly (they are used for [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py)  and [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py), respectively)
+     - Many input arguments for [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py) and [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py) are specific for our SCOPE-MRI dataset (called ```labrum``` in the ```dataset_type``` argument); you can remove and/or modify these based on your code for preparing dataloaders
  - You can add custom models or modify the existing ones in [`models.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/models.py)
  - This version of the codebase is designed to train all models on a single GPU, but manually implements much of the same behavior as PyTorch Lightning (eg, checkpointing, Optuna integration, TensorBoard logging); if you wish to train on multiple GPUs, we recommend using [`this article`](https://lightning.ai/docs/pytorch/stable/starter/converting.html) to adapt the code 
-   - You will also need to change ```job_labrum_train.sh``` to request multiple GPUs on your HPC
+   - You will also need to change [`job_labrum_train.sh`](https://github.com/sahilsethi0105/scope-mri/blob/main/scripts/job_labrum_train.sh) to request multiple GPUs on your HPC
  - For multi-class classification, you will need to update the loss function and classifier parts of the models accordingly, as well as possibly modify some of the logging
 
 ## Installation
@@ -38,7 +38,7 @@ conda activate ortho_env
 ```
 
 ## Accessing the Data
-If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. 
+If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. The repo is already compatible with MRNet. 
 
 However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB) _**UPDATE WITH EXACT INSTRUCTIONS**_. Then, follow the data preprocessing steps below. 
 
@@ -53,7 +53,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 
 ## Using the Repo with MRNet
  - First, fill out the dataset research use agreement with your email [`here`](https://stanfordmlgroup.github.io/competitions/mrnet/), and you should automatically receive a link to download the data 
- - If they are no longer maintaining that website, they have also posted it [`here`](https://aimi.stanford.edu/datasets/mrnet-knee-mris)
+ - If they are no longer maintaining that website, Stanford has also posted it [`here`](https://aimi.stanford.edu/datasets/mrnet-knee-mris)
  - After unzipping the folder, you should see ```train``` and ```valid``` subfolders
      - Our code uses the `valid` set as a hold-out test set, and dynamically selects a 120-MRI subset of the ```train``` data to monitor progresss as a validation/tuning set
      - You can adjust this by changing ```create_stratified_validation_set()``` and when it is called in ```prepare_datasets()``` in [`loader.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/loader.py)
@@ -85,7 +85,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
  - [`scripts/`](https://github.com/sahilsethi0105/scope-mri/tree/main/scripts) contains the shell scripts used to submit jobs to SLURM if using an HPC
  - The files in [`src/`](https://github.com/sahilsethi0105/scope-mri/tree/main/src) log information to TensorBoard, including learning rate, performance metrics, and the middle slice of the first MRI in the first batch for train/val/test per epoch (helps with inspecting augmentation and verifying data loading code)
  - To view TensorBoard logs, after activating your conda environment (with TensorBoard installed), do: ```tensorboard --logdir=/path/to/logdir/job_name --port 6006```
-   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in ```labrum_train.py``` and ```labrum_tune.py ```
+   - Replace ```'path/to/logdir/'``` with the actual path, and make sure to update it in [`labrum_train.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_train.py) and [`labrum_tune.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/labrum_tune.py)
    - Use the ```'job_name'``` from when you began training/tuning
    - Then, either access ```http://localhost:6006``` in your browser
    - Or if on an HPC, ssh into the computer with a new terminal tab ```ssh -L 6006:localhost:6006 myaccount@example_computer.edu```, then access ```http://localhost:6006``` in your browser
