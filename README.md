@@ -40,15 +40,15 @@ conda activate ortho_env
 ## Accessing the Data
 If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. The repo is already compatible with MRNet. 
 
-However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB) _**UPDATE WITH EXACT INSTRUCTIONS**_. Then, follow the data preprocessing steps below. 
+However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB) _**WILL BE UPDATED WITH EXACT INSTRUCTIONS SHORTLY**_. Then, follow the data preprocessing steps below. 
 
 ## Using the Repo with SCOPE-MRI
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
 - [`train_test_val_creation.py`](https://github.com/sahilsethi0105/ortho_ml/blob/main/train_test_val_creation.py):
 - For all files in this codebase, **your ```preprocessed_folder``` should be the final folder that contains your ```train```, ```val```, and ```test``` subfolder**
   - Note that these each contain subfolders for each MRI_ID, each with one preprocessed .npy array for each sequence in that MRI
-- Note that we manually filtered out sequences that were repeated (the repeat was kept and original was removed, with the assumption that the poor image quality let to the repreat sequence) _**UPDATE WITH EXACT LIST OR Instructions**_
-- _**UPDATE WITH How to Get Labels and Metadata**_
+- Note that we manually filtered out sequences that were repeated (the repeat was kept and original was removed, with the assumption that the poor image quality let to the repreat sequence) _**WILL BE UPDATED WITH EXACT Instructions SHORTLY**_
+- _**WILL BE UPDATED WITH How to Get Labels and Metadata SHORTLY**_
 - Specify a random seed for ```random_state``` in ```stratified_split_data_by_mri_id()``` if desired (eg, 42)
 
 ## Using the Repo with MRNet
