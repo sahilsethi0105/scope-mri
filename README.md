@@ -93,7 +93,7 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 
 ## Citation
 
-Please cite both papers associated with this repository and dataset **(UPDATE with SCOPE-MRI citation after arXiv post)**:
+Please cite both papers associated with this repository and dataset:
 
 ```bibtex
 @misc{sethi2025scopemribankartlesiondetection,
