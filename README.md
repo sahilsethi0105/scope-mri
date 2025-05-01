@@ -96,14 +96,14 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 Please cite both papers associated with this repository and dataset **(UPDATE with SCOPE-MRI citation after arXiv post)**:
 
 ```bibtex
-@misc{sethi2024noninvasivediagnosisbankartlesions,
-      title={Toward Non-Invasive Diagnosis of Bankart Lesions with Deep Learning}, 
+@misc{sethi2025scopemribankartlesiondetection,
+      title={SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses}, 
       author={Sahil Sethi and Sai Reddy and Mansi Sakarvadia and Jordan Serotte and Darlington Nwaudo and Nicholas Maassen and Lewis Shi},
-      year={2024},
-      eprint={2412.06717},
+      year={2025},
+      eprint={2504.20405},
       archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.06717}, 
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2504.20405}, 
 }
 ```
 ```bibtex
