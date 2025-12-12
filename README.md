@@ -1,8 +1,8 @@
 # SCOPE-MRI: Intro to deep learning for MRIs/CTs
 This repository is meant to be a useful resource for getting started with using deep learning on MRIs and CT scans. It accompanies the release of the Shoulder Comprehensive Orthopedic Pathology Evaluation (SCOPE)-MRI dataset—a publicly available shoulder MRI dataset with image-level labels for several different pathologies. The dataset is described in our paper:
 
-> [**SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses**](https://pmc.ncbi.nlm.nih.gov/articles/PMC12091705/)<br/>
-  Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>arXiv</b>, preprint under review.
+> [**SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses**](https://www.nature.com/articles/s44387-025-00043-5)<br/>
+  Sahil Sethi, Sai Reddy, Mansi Sakarvadia, Jordan Serotte, Darlington Nwaudo, Nicholas Maassen, & Lewis Shi. <b>Nature Partner Journal (NPJ) Artificial Intelligence</b>, 2025.
 
 This is an extension of the work described in our prior paper:
 
@@ -40,7 +40,7 @@ conda activate ortho_env
 ## Accessing the Data
 If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. The repo is already compatible with MRNet. 
 
-However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system and download the DICOMs (~67 GB) _**WILL BE UPDATED WITH EXACT INSTRUCTIONS SHORTLY**_. Then, follow the data preprocessing steps below. 
+However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system using the `UChicago-ScopeMRI` tag, or access the dataset directly via [`this link`](https://www.nature.com/articles/s44387-025-00043-5). _**WILL BE UPDATED WITH FURTHER INSTRUCTIONS SHORTLY**_. Then, follow the data preprocessing steps below. 
 
 ## Using the Repo with SCOPE-MRI
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
