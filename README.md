@@ -40,7 +40,7 @@ conda activate ortho_env
 ## Accessing the Data
 If you simply want to use this repo to get familiar with deep learning for MRIs/CTs, we recommend installing the [`Stanford MRNet dataset available here`](https://stanfordmlgroup.github.io/competitions/mrnet/). Their dataset is larger than ours and significantly easier to train on. The repo is already compatible with MRNet. 
 
-However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system using the `UChicago-ScopeMRI` tag, or access the dataset directly via [`this link`](https://www.nature.com/articles/s44387-025-00043-5). _**WILL BE UPDATED WITH FURTHER INSTRUCTIONS SHORTLY**_. Then, follow the data preprocessing steps below. 
+However, if you are interested in the SCOPE-MRI dataset, it has been released on the [`Medical Imaging and Data Resource Center (MIDRC)`](https://www.midrc.org/). Non-commercial access is freely available per MIDRC's usage policies to government and academic researchers. You can search for our MRIs in their system using the `UChicago-ScopeMRI` tag, or access the dataset directly via [`this link`](https://data.midrc.org/discovery/B0F4-W8N8). _**WILL BE UPDATED WITH FURTHER INSTRUCTIONS SHORTLY**_. Then, follow the data preprocessing steps below. 
 
 ## Using the Repo with SCOPE-MRI
 - [`MRI_and_metadata_import.py`](https://github.com/sahilsethi0105/scope-mri/blob/main/src/MRI_and_metadata_import.py):
