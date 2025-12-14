@@ -96,14 +96,19 @@ However, if you are interested in the SCOPE-MRI dataset, it has been released on
 Please cite both papers associated with this repository and dataset:
 
 ```bibtex
-@misc{sethi2025scopemribankartlesiondetection,
-      title={SCOPE-MRI: Bankart Lesion Detection as a Case Study in Data Curation and Deep Learning for Challenging Diagnoses}, 
-      author={Sahil Sethi and Sai Reddy and Mansi Sakarvadia and Jordan Serotte and Darlington Nwaudo and Nicholas Maassen and Lewis Shi},
-      year={2025},
-      eprint={2504.20405},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV},
-      url={https://arxiv.org/abs/2504.20405}, 
+@article{sethi_scope-mri_2025,
+	title = {{SCOPE}-{MRI}: {Bankart} lesion detection as a case study in data curation and deep learning for challenging diagnoses},
+	volume = {1},
+	issn = {3005-1460},
+	url = {https://doi.org/10.1038/s44387-025-00043-5},
+	doi = {10.1038/s44387-025-00043-5},
+	abstract = {Deep learning has shown strong performance in musculoskeletal imaging, but prior work has largely targeted conditions where diagnosis is relatively straightforward. More challenging problems remain underexplored, such as detecting Bankart lesions (anterior-inferior glenoid labral tears) on standard MRIs. These lesions are difficult to diagnose due to subtle imaging features, often necessitating invasive MRI arthrograms (MRAs). We introduce ScopeMRI, the first publicly available, expert-annotated dataset for shoulder pathologies, and present a deep learning framework for Bankart lesion detection on both standard MRIs and MRAs. ScopeMRI contains shoulder MRIs from patients who underwent arthroscopy, providing ground-truth labels from intraoperative findings, the diagnostic gold standard. Separate models were trained for MRIs and MRAs using CNN- and transformer-based architectures, with predictions ensembled across multiple imaging planes. Our models achieved radiologist-level performance, with accuracy on standard MRIs surpassing radiologists interpreting MRAs. External validation on independent hospital data demonstrated initial generalizability across imaging protocols. By releasing ScopeMRI and a modular codebase for training and evaluation, we aim to accelerate research in musculoskeletal imaging and foster the development of datasets and models that address clinically challenging diagnostic tasks.},
+	number = {1},
+	journal = {npj Artificial Intelligence},
+	author = {Sethi, Sahil and Reddy, Sai and Sakarvadia, Mansi and Serotte, Jordan and Nwaudo, Darlington and Maassen, Nicholas and Shi, Lewis},
+	month = dec,
+	year = {2025},
+	pages = {41},
 }
 ```
 ```bibtex
